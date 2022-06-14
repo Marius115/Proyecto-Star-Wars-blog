@@ -28,6 +28,11 @@ export const Single = props => {
 						? "characters"
 						: params.resource}/${store.singleCharacter.uid}.jpg`}/>
 			</div>
+			<div>
+				<h2>aqui va el name: </h2>
+
+
+			</div>
 
    
 			

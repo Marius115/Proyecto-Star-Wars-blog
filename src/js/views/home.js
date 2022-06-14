@@ -8,7 +8,7 @@ export const Home = () =>{
 	return (
 		 <div className="container">
 			<div className="d-flex flex-wrap w-100">
-				<h2 className="text-secondary">Characters</h2>
+				<h2 className="text-warning">Characters</h2>
 				<div className="d-flex overflow-scroll">
 					{store.characters.map(
 						(character) => {
@@ -26,7 +26,7 @@ export const Home = () =>{
 			</div>
 
 				<div className="d-flex flex-wrap w-100">
-				  <h2 className="text-secondary">Vehicles</h2>
+				  <h2 className="text-warning">Vehicles</h2>
 					<div className="d-flex overflow-scroll">
 						{store.vehicles.map(
 							(vehicle) => {
@@ -44,7 +44,7 @@ export const Home = () =>{
 				</div>
 		
 				<div className="d-flex flex-wrap w-100">
-				<h2 className="text-secondary">Planets</h2>
+				<h2 className="text-warning">Planets</h2>
 					<div className="d-flex overflow-scroll">
 						{store.planets.map(
 							(planets) => {
