@@ -7,11 +7,11 @@ export const Card = ({item,resource}) => {
     return(
 	<div className="tab-pane ps-2 pb-1 pt-2 pe-2" role="tabpanel" aria-labelledby="profile-tab" tabIndex="0">
         <div className="card" style={{width: "18rem"}}>
-  			<img src={`https://starwars-visualguide.com/assets/img/${resource == "people" ? "characters" : resource }/${item.uid}.jpg`} className="card-img-top" alt="..." />
+  			<img src={`https://starwars-visualguide.com/assets/img/${resource === "people" ? "characters" : resource }/${item.uid}.jpg`} className="card-img-top" alt="..." />
  			 <div className="card-body">
-   			 <h5 className="card-title">{resource.name}</h5>
-   			 <p className="card-text"> {item.gender} </p>
-    		 <Link to={`/single/${item.uid}`}  className="btn btn-primary">Go somewhere</Link>
+   			 <h5 className="card-title">{item.name}</h5>
+   			 <p className="card-text"> Lorem Impsum </p>
+    		 <Link to={`/single/${resource}/${item.uid}`}  className="btn btn-primary justify-content-center align-middle">Go somewhere</Link>
   			 </div>
 		</div>
 	</div>

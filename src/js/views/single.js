@@ -9,6 +9,7 @@ export const Single = props => {
 	const params = useParams();
 	
 	useEffect( () => {
+		if (!params.resource || !params.uid ) return;
 		actions.getsingleCharacter(params.resource, params.uid)
 		
 	},[params.resource, params.uid]);
@@ -20,12 +21,11 @@ export const Single = props => {
 	return (
 		<div className="jumbotron">
 
-			
-
-
+		
 			<div className="col-6 d-flex justify-content-center align-middle">
+				
 					<img src={`https://starwars-visualguide.com/assets/img/${params.resource == "people" 
-						? "character"
+						? "characters"
 						: params.resource}/${store.singleCharacter.uid}.jpg`}/>
 			</div>
 
@@ -39,11 +39,7 @@ export const Single = props => {
     
 			
 
-			
-			
-			
-			
-			
+	
 			
 			
 			<hr className="my-4" />

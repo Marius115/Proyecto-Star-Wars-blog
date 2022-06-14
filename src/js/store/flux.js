@@ -31,13 +31,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}
 			
 		    },
+		// preguntar por la diferencia entre set store y get store.
 		// como las propiedades de los personajes estan dentro de la url que nos arroja con /"numero" se pone en store, una ruta mas directa.
 		// Posible error en la manera de fetch o falta de llamado de datos?
 		// !!!! ESTE ES GET CHARACTER EN SINGULAR !!!!!
-		getsingleCharacter: async (uid) => {
+		getsingleCharacter: async (resource, uid) => {
 			try {
 				const response = await fetch(
-					`${API_URL}/people/${uid}`
+					`${API_URL}/${resource}/${uid}`
 				);
 				const body = await response.json()
 				if (response.status !== 200) {
@@ -48,7 +49,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			singleCharacter: {
 				...body.result.properties, 
 				uid: body.result.uid,
-				description: body.result.description,
+				
 			}	
 		})
 

@@ -4,14 +4,24 @@ import { Link } from "react-router-dom";
 export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-light bg-light mb-3">
-			<Link to="/">
-				<span className="navbar-brand mb-0 h1">Poner logo</span>
+			<Link to="/" className="w-25 ms-3">
+			<img
+          src="https://webstockreview.net/images/starwars-clipart-logo-4.png"
+          className="w-50 content-center"
+          style={{
+            maxWidth: "100px",
+          }}
+        />
 			</Link>
-			<div className="ml-auto">
+			<div className="ml-auto me-3">
 				<Link to="/demo">
-					<button className="btn btn-primary">Check the Context in action</button>
+					<button className="btn btn-warning">Favorites</button>
 				</Link>
 			</div>
 		</nav>
 	);
 };
+
+// ESTILIZAR EL BOTON DE FAVORITOS
+//PONERLE EL DROPDOWN
+//PONLO DECENTE 
