@@ -63,7 +63,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 
 	//aqui iria para favorite
-	removeSingleItem: async (resource) => {
+	removeSingleItem: async () => {
 				
 		setStore ({
 			singleItem: ""

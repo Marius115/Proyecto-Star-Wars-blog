@@ -18,7 +18,7 @@ export const Navbar = () => {
 			</Link>
 			<div className="ml-auto me-4">
 				<div className="dropdown">
-					<button className="btn btn-black border border-warning border-2 dropdown-toggle d-flex dd-items" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+					<button className="btn btn-dark border border-warning border-2 dropdown-toggle d-flex dd-items" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 						<p className="m-0 me-1 text-light">Favorites</p> 
 						<div className="dot me-1">{store.favorites.length}</div>
 					</button>
@@ -40,6 +40,6 @@ export const Navbar = () => {
 	);
 };
 
-// Errror en el badge, linea 22
-//error de adicion multiple
-// help
+// Errror en el badge, linea 22(evitar bs y practicar css).
+
+//error de adicion multiple(condicional arreglado en favorite ).
