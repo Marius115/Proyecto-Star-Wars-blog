@@ -10,15 +10,13 @@ export const Home = () =>{
 			<div className="d-flex flex-wrap w-100">
 				<h2 className="text-warning">Characters</h2>
 				<div className="d-flex overflow-scroll">
-					{store.characters.map(
-						(character) => {
+					{store.people.map(
+						(item) => {
 							return (
 							<Card 
-							key={character.uid}
-							item={character} 
-							resource={"people"}
-							
-							/>
+							key={item.uid}
+							item={item} 
+							resource={"people"}/>
 							)
 						}
 					)}
@@ -29,14 +27,12 @@ export const Home = () =>{
 				  <h2 className="text-warning">Vehicles</h2>
 					<div className="d-flex overflow-scroll">
 						{store.vehicles.map(
-							(vehicle) => {
+							(item) => {
 								return (
 								<Card 
-								key={vehicle.uid}
-								item={vehicle} 
-								resource={"vehicles"}
-								
-								/>
+								key={item.uid}
+								item={item} 
+								resource={"vehicles"}/>
 								)
 							}
 						)}
@@ -47,14 +43,12 @@ export const Home = () =>{
 				<h2 className="text-warning">Planets</h2>
 					<div className="d-flex overflow-scroll">
 						{store.planets.map(
-							(planets) => {
+							(item) => {
 								return (
 								<Card 
-								key={planets.uid}
-								item={planets} 
-								resource={"planets"}
-
-								/>
+								key={item.uid}
+								item={item} 
+								resource={"planets"}/>
 								)
 							}
 						)}

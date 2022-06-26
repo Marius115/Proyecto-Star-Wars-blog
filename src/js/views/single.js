@@ -10,54 +10,87 @@ export const Single = props => {
 	
 	useEffect( () => {
 		if (!params.resource || !params.uid ) return;
-		actions.getsingleCharacter(params.resource, params.uid)
+		actions.getsingleItem(params.resource, params.uid)
+		
 		
 	},[params.resource, params.uid]);
 
-    //Los params resource y uid deberian establecer los parametros, porque no se relacionan?
-	// por alguna razon esto no me esta trayendo el nombre del personaje de manera individual
-	//El condicional en la imagen es el mismo que en card
-	//Se usa el mismo resource para establece las 3 categorias
+    //Cambiar condicional para mostrar atributos de elementos de cada categoria
+	// probar con operadores ternarios: || , && 
+	//probar full condicionales: if/else if/else , switch	
+	// foto y {singlecharacter.name} sirve para las 3 categorias
 	return (
-		<div className="jumbotron">
-
-		
-			<div className="col-6 d-flex justify-content-center align-middle">
+		<div className="container">
+			<div className="row justify-content-center align middle">
+				<div className="col-6 d-flex justify-content-center align-middle">	
+				<img src={`https://starwars-visualguide.com/assets/img/${params.resource === "people" 
+							? "characters"
+							: params.resource}/${store.singleItem.uid}.jpg`}/>
+				</div>		
+				<div className="col-6 d-flex flex-column justify-content-center align-middle text-warning">
+							
 				
-					<img src={`https://starwars-visualguide.com/assets/img/${params.resource == "people" 
-						? "characters"
-						: params.resource}/${store.singleCharacter.uid}.jpg`}/>
+					<div className="row container mt-4 flex-column">
+						<div className="col-2 fs-4 flex-nowrap justify-content-center w-100">
+							<h1>{store.singleItem.name}</h1>
+							<p>{store.singleItem.description}</p>
+						</div>
+
+						<div className="col-2 fs-4 d-flex justify-content-between w-100">
+							{params.resource === "people" && <p>Birth Year:</p>}
+							{params.resource === "people" && <p>{store.singleItem.birth_year}</p>}
+							{params.resource === "vehicles" && <p>Model:</p>}
+							{params.resource === "vehicles" && <p>{store.singleItem.model}</p>}
+							{params.resource === "planets" && <p>Climate:</p>}
+							{params.resource === "planets" && <p>{store.singleItem.climate}</p>}
+						</div>
+
+						<div className="col-2 fs-4 d-flex justify-content-between w-100">
+							{params.resource === "people" && <p>Gender:</p>}
+							{params.resource === "people" && <p>{store.singleItem.gender}</p>}
+							{params.resource === "vehicles" && <p>Length:</p>}
+							{params.resource === "vehicles" && <p>{store.singleItem.length}</p>}
+							{params.resource === "planets" && <p>Population:</p>}
+							{params.resource === "planets" && <p>{store.singleItem.population}</p>}
+						</div>
+
+						<div className="col-2 fs-4 d-flex justify-content-between w-100">
+							{params.resource === "people" && <p>Height:</p>}
+							{params.resource === "people" && <p>{store.singleItem.height}</p>}
+							{params.resource === "vehicles" && <p>Crew:</p>}
+							{params.resource === "vehicles" && <p>{store.singleItem.crew}</p>}
+							{params.resource === "planets" && <p>Orbital Period:</p>}
+							{params.resource === "planets" && <p>{store.singleItem.orbital_period}</p>}
+						</div>
+
+						<div className="col-2 fs-4 d-flex justify-content-between w-100">
+							{params.resource === "people" && <p>Skin Color:</p>}
+							{params.resource === "people" && <p>{store.singleItem.skin_color}</p>}
+							{params.resource === "vehicles" && <p>Passengers:</p>}
+							{params.resource === "vehicles" && <p>{store.singleItem.passengers}</p>}
+							{params.resource === "planets" && <p>Rotation Period:</p>}
+							{params.resource === "planets" && <p>{store.singleItem.rotation_period}</p>}
+						</div>
+
+						<div className="col-2 fs-4 d-flex justify-content-between w-100">
+							{params.resource === "people" && <p>Eye Color:</p>}
+							{params.resource === "people" && <p>{store.singleItem.eye_color}</p>}
+							{params.resource === "vehicles" && <p>Cost:</p>}
+							{params.resource === "vehicles" && <p>{store.singleItem.cost_in_credits}</p>}
+							{params.resource === "planets" && <p>terrain:</p>}
+							{params.resource === "planets" && <p>{store.singleItem.terrain}</p>}
+						</div>	
+
+					</div>
+				</div>
 			</div>
-			<div>
-				<h2>aqui va el name: </h2>
-
-
-			</div>
-
-   
-			
-
-			
-
-		
-
-    
-			
-
-	
-			
-			
-			<hr className="my-4" />
-
-			<Link to="/">
-				<span className="btn btn-primary btn-lg" href="#" role="button">
-					Back home
-				</span>
-			</Link>
 		</div>
-	);
+	)
 };
 
 Single.propTypes = {
 	match: PropTypes.object
 };
+
+
+

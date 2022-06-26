@@ -1,28 +1,30 @@
 const API_URL = "https://www.swapi.tech/api"
-const API_CHARACTERS = "https://www.swapi.tech/api/people"
+
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			characters: [],
+			people: [],
 			vehicles: [],
 			planets: [],
-			singleCharacter: {}
+			singleItem: {},
+			favorites: [],
+			heartButton: "outline-",
 		},
 		actions: {
-	// !!!! ESTE ES GET CHARACTERS EN PLURAL !!!!!
-			getCharacters: async () => {
+	// !!!! ESTE ES GET ITEMS EN PLURAL !!!!!
+			getItems: async (resource) => {
 				try {
 					const response = await fetch(
-						`${API_URL}/people`
+						`${API_URL}/${resource}`
 					);
 					const body = await response.json()
 					if (response.status !== 200) {
-						alert("no cargaron los personajes");
-					return;
-			}
+						alert("No cargaron los items");
+						return;
+					}
 			setStore({
-				characters: body.results
+				[`${resource}`]: body.results
 			})
 
 		    } catch (error) {
@@ -31,11 +33,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}
 			
 		    },
-		// preguntar por la diferencia entre set store y get store.
-		// como las propiedades de los personajes estan dentro de la url que nos arroja con /"numero" se pone en store, una ruta mas directa.
-		// Posible error en la manera de fetch o falta de llamado de datos?
-		// !!!! ESTE ES GET CHARACTER EN SINGULAR !!!!!
-		getsingleCharacter: async (resource, uid) => {
+		
+
+		// !!!! ESTE ES GET ITEMS EN SINGULAR !!!!!
+		getsingleItem: async (resource, uid) => {
 			try {
 				const response = await fetch(
 					`${API_URL}/${resource}/${uid}`
@@ -46,9 +47,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return;
 		}
 		setStore({
-			singleCharacter: {
+			singleItem: {
 				...body.result.properties, 
 				uid: body.result.uid,
+				description: body.result.description
 				
 			}	
 		})
@@ -60,51 +62,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 		
 		},
 
-
-		// !!!! ESTE ES GET VEHICLES EN PLURAL !!!!!
-
-				getVehicles: async () => {
-					try {
-						const response = await fetch(
-							`${API_URL}/vehicles`
-						);
-						const body = await response.json()
-						if (response.status !== 200) {
-							alert("no cargaron los vehiculos");
-						return;
-				}
-				setStore({
-					vehicles: body.results
-				})
-
-				} catch (error) {
-				alert("algo malo paso")
-				console.log(error)
-				}
+	//aqui iria para favorite
+	removeSingleItem: async (resource) => {
 				
-			    },
+		setStore ({
+			singleItem: ""
+		})
+	},	
 
-	    // !!!! ESTE ES PLANETS EN PLURAL !!!!!
-				getPlanets: async () => {
-					try {
-						const response = await fetch(
-							`${API_URL}/planets`
-						);
-						const body = await response.json()
-						if (response.status !== 200) {
-							alert("no cargaron los planetinos");
-						return;
-				}
-				setStore({
-					planets: body.results
-				})
+	addFavorites: (resource) => {
+		const store = getStore()
+		if (store.favorites.find(favorite => favorite.name == resource.name)) return
+		setStore({
+			favorites: [...store.favorites, resource]
+		})
+	},
+	deleteFavorites: (resource) => {
+		setStore({
+			favorites: [...getStore().favorites.filter((item,index)=>{
+				if (resource.name !== item.name) return true;
+			})]
+		})
+	},
+	holdHeartButton: () => {
+		setStore ({
+			heartButton: "",
 
-				} catch (error) {
-				alert("algo malo paso")
-				console.log(error)
-				}
-				
-			    }
+		}
+		)
+	}
 
 
 	}

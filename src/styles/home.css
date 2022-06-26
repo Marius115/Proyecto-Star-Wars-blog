@@ -4,3 +4,8 @@ body{
     width: auto;
 }
 
+.dot {
+    border-radius: 50%;
+    background-color: rgb(255, 191, 67);
+    width: 25px;
+}
